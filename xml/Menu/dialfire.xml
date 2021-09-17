@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/dialfire/webhook</path>
+    <page_callback>CRM_Dialfire_Page_Webhook</page_callback>
+    <title>Dialfire Webhook</title>
+    <access_arguments>receive Dialfire webhooks</access_arguments>
+  </item>
+</menu>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+
+<table>
+  <base>CRM/Dialfire</base>
+  <class>DialfireResponse</class>
+  <name>civicrm_dialfire_response</name>
+  <comment></comment>
+  <log>true</log>
+
+  <field>
+    <name>id</name>
+    <type>int unsigned</type>
+    <required>true</required>
+    <comment>Unique DialfireResponse ID</comment>
+    <html>
+      <type>Number</type>
+    </html>
+  </field>
+  <primaryKey>
+    <name>id</name>
+    <autoincrement>true</autoincrement>
+  </primaryKey>
+
+  <field>
+    <name>dialfire_task_id</name>
+    <type>int unsigned</type>
+    <comment>FK to Dialfire Task</comment>
+    <html>
+      <type>Select</type>
+    </html>
+  </field>
+  <foreignKey>
+    <name>dialfire_task_id</name>
+    <table>civicrm_dialfire_task</table>
+    <key>id</key>
+    <onDelete>SET NULL</onDelete>
+  </foreignKey>
+
+  <field>
+    <name>dialfire_contact_id</name>
+    <type>int unsigned</type>
+    <comment>FK to DialfireContact</comment>
+  </field>
+  <foreignKey>
+    <name>dialfire_contact_id</name>
+    <table>civicrm_dialfire_contact</table>
+    <key>id</key>
+    <onDelete>SET NULL</onDelete>
+  </foreignKey>
+
+  <field>
+    <name>dialfire_contact_identifier</name>
+    <title>Dialfire Contact ID</title>
+    <type>varchar</type>
+    <length>64</length>
+    <required>true</required>
+    <comment>Unique identifier of contact in dialfire</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>dialfire_record_version</name>
+    <title>Dialfire Record Version</title>
+    <type>varchar</type>
+    <length>64</length>
+    <required>true</required>
+    <comment>Current version of the record in dialfire</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>dialfire_entry_date</name>
+    <type>timestamp</type>
+    <required>true</required>
+    <comment>Date of last status change in dialfire</comment>
+  </field>
+
+  <field>
+    <name>response</name>
+    <title>Response (JSON)</title>
+    <type>text</type>
+    <required>true</required>
+    <serialize>JSON</serialize>
+    <comment></comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>last_error</name>
+    <title>Last Error (JSON)</title>
+    <type>longtext</type>
+    <serialize>JSON</serialize>
+    <comment></comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>response_status_id</name>
+    <title>Response Status</title>
+    <type>int unsigned</type>
+    <required>true</required>
+    <comment>ID of response status</comment>
+    <default>1</default>
+    <pseudoconstant>
+      <optionGroupName>dialfire_response_status</optionGroupName>
+    </pseudoconstant>
+    <html>
+      <type>Select</type>
+    </html>
+  </field>
+
+  <field>
+    <name>created_date</name>
+    <type>timestamp</type>
+    <comment></comment>
+    <required>true</required>
+    <default>CURRENT_TIMESTAMP</default>
+    <readonly>true</readonly>
+  </field>
+
+  <field>
+    <name>modified_date</name>
+    <title>Modified Date</title>
+    <type>timestamp</type>
+    <comment></comment>
+    <default>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</default>
+    <readonly>true</readonly>
+  </field>
+
+</table>

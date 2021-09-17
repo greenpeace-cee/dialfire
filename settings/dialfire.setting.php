@@ -1,0 +1,66 @@
+<?php
+
+return [
+  'dialfire_default_contact_query' => [
+    'name'       => 'dialfire_default_contact_query',
+    'type'       => 'Array',
+    'html_type'  => 'text',
+    'default'    => [
+      'select' => [
+        '*',
+        'contact.*',
+        'address.*',
+        'address.country_id:name',
+      ],
+      'join' => [
+        ['Contact AS contact', 'INNER', NULL, ['contact_id', '=', 'contact.id']],
+        ['Address AS address', 'LEFT', NULL, ['contact_id', '=', 'address.contact_id'], ['address.is_primary', '=', 1]],
+      ],
+      'chain' => [
+        'email' => ['Email', 'get', ['where' => [['contact_id', '=', '$contact_id']], 'orderBy' => ['is_primary' => 'DESC', 'id' => 'DESC']]],
+        'phone' => ['Phone', 'get', ['where' => [['contact_id', '=', '$contact_id']], 'orderBy' => ['is_primary' => 'DESC', 'id' => 'DESC']]],
+      ],
+    ],
+    'add'        => '1.0',
+    'title'      => ts('Default Dialfire API4 Contact Query'),
+    'is_domain'  => 1,
+    'is_contact' => 0,
+  ],
+  'dialfire_default_field_map' => [
+    'name'       => 'dialfire_default_field_map',
+    'type'       => 'Array',
+    'html_type'  => 'text',
+    'default'    => [
+      'contact_id'     => '"contact.id"',
+      'activity_id'    => 'activity_id',
+      'formal_title'   => '"contact.formal_title"',
+      'first_name'     => '"contact.first_name"',
+      'last_name'      => '"contact.last_name"',
+      'birth_date'     => '"contact.birth_date"',
+      'street_address' => '"address.street_address"',
+      'city'           => '"address.city"',
+      'postal_code'    => '"address.postal_code"',
+      'country'        => '"address.country_id:name"',
+      'email1'         => 'email[0].email',
+      'email2'         => 'email[1].email',
+      'email3'         => 'email[2].email',
+      '$phone'         => 'phone[0].phone_numeric',
+      'phone2'         => 'phone[1].phone_numeric',
+      'phone3'         => 'phone[2].phone_numeric',
+    ],
+    'add'        => '1.0',
+    'title'      => ts('Default Dialfire Field Map'),
+    'is_domain'  => 1,
+    'is_contact' => 0,
+  ],
+  'dialfire_max_retries' => [
+    'name'       => 'dialfire_max_retries',
+    'type'       => 'Integer',
+    'html_type'  => 'number',
+    'default'    => 10,
+    'add'        => '1.0',
+    'title'      => ts('Maximum Number of Dialfire API Retry Attempts'),
+    'is_domain'  => 1,
+    'is_contact' => 0,
+  ],
+];

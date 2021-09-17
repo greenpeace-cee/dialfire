@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+
+<table>
+  <base>CRM/Dialfire</base>
+  <class>DialfireCampaign</class>
+  <name>civicrm_dialfire_campaign</name>
+  <comment></comment>
+  <log>true</log>
+
+  <field>
+    <name>id</name>
+    <type>int unsigned</type>
+    <required>true</required>
+    <comment>Unique DialfireCampaign ID</comment>
+    <html>
+      <type>Number</type>
+    </html>
+  </field>
+  <primaryKey>
+    <name>id</name>
+    <autoincrement>true</autoincrement>
+  </primaryKey>
+
+  <field>
+    <name>dialfire_campaign_identifier</name>
+    <title>Dialfire Campaign ID</title>
+    <type>varchar</type>
+    <length>64</length>
+    <required>true</required>
+    <comment>Unique identifier of campaign in dialfire</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <index>
+    <name>UI_dialfire_campaign_identifier</name>
+    <fieldName>dialfire_campaign_identifier</fieldName>
+    <unique>true</unique>
+  </index>
+
+  <field>
+    <name>dialfire_tenant_id</name>
+    <type>int unsigned</type>
+    <comment>FK to Dialfire Tenant</comment>
+    <html>
+      <type>Select</type>
+    </html>
+  </field>
+  <foreignKey>
+    <name>dialfire_tenant_id</name>
+    <table>civicrm_dialfire_tenant</table>
+    <key>id</key>
+    <onDelete>SET NULL</onDelete>
+  </foreignKey>
+
+  <field>
+    <name>name</name>
+    <title>Campaign Name</title>
+    <type>varchar</type>
+    <length>255</length>
+    <required>true</required>
+    <comment>Campaign name</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>token</name>
+    <title>Token</title>
+    <type>varchar</type>
+    <length>255</length>
+    <required>true</required>
+    <comment>Tenant token</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>contact_query</name>
+    <title>Contact Query (JSON)</title>
+    <type>text</type>
+    <serialize>JSON</serialize>
+    <comment>Custom API4 contact query for this campaign</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>field_map</name>
+    <title>Field Map (JSON)</title>
+    <type>text</type>
+    <serialize>JSON</serialize>
+    <comment>Custom field map of JMESPath expressions for this campaign</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>created_date</name>
+    <title>Created Date</title>
+    <type>timestamp</type>
+    <comment></comment>
+    <required>true</required>
+    <default>CURRENT_TIMESTAMP</default>
+    <readonly>true</readonly>
+  </field>
+
+  <field>
+    <name>modified_date</name>
+    <title>Modified Date</title>
+    <type>timestamp</type>
+    <comment></comment>
+    <default>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</default>
+    <readonly>true</readonly>
+  </field>
+
+</table>

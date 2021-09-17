@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+
+<table>
+  <base>CRM/Dialfire</base>
+  <class>DialfireTask</class>
+  <name>civicrm_dialfire_task</name>
+  <comment></comment>
+  <log>true</log>
+
+  <field>
+    <name>id</name>
+    <type>int unsigned</type>
+    <required>true</required>
+    <comment>Unique DialfireTask ID</comment>
+    <html>
+      <type>Number</type>
+    </html>
+  </field>
+  <primaryKey>
+    <name>id</name>
+    <autoincrement>true</autoincrement>
+  </primaryKey>
+
+  <field>
+    <name>dialfire_task_identifier</name>
+    <title>Dialfire Task ID</title>
+    <type>varchar</type>
+    <length>64</length>
+    <required>true</required>
+    <comment>Unique identifier of task in dialfire</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>dialfire_campaign_id</name>
+    <type>int unsigned</type>
+    <comment>FK to Dialfire Campaign</comment>
+    <html>
+      <type>Select</type>
+    </html>
+  </field>
+  <foreignKey>
+    <name>dialfire_campaign_id</name>
+    <table>civicrm_dialfire_campaign</table>
+    <key>id</key>
+    <onDelete>SET NULL</onDelete>
+  </foreignKey>
+
+  <index>
+    <name>UI_dialfire_task_identifier_dialfire_campaign_id</name>
+    <fieldName>dialfire_task_identifier</fieldName>
+    <fieldName>dialfire_campaign_id</fieldName>
+    <unique>true</unique>
+  </index>
+
+  <field>
+    <name>name</name>
+    <title>Task Name</title>
+    <type>varchar</type>
+    <length>255</length>
+    <required>false</required>
+    <comment>Task name</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>created_date</name>
+    <title>Created Date</title>
+    <type>timestamp</type>
+    <comment></comment>
+    <required>true</required>
+    <default>CURRENT_TIMESTAMP</default>
+    <readonly>true</readonly>
+  </field>
+
+  <field>
+    <name>modified_date</name>
+    <title>Modified Date</title>
+    <type>timestamp</type>
+    <comment></comment>
+    <default>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</default>
+    <readonly>true</readonly>
+  </field>
+
+</table>

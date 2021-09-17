@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+
+<table>
+  <base>CRM/Dialfire</base>
+  <class>DialfireTenant</class>
+  <name>civicrm_dialfire_tenant</name>
+  <comment></comment>
+  <log>true</log>
+
+  <field>
+    <name>id</name>
+    <type>int unsigned</type>
+    <required>true</required>
+    <comment>Unique DialfireTenant ID</comment>
+    <html>
+      <type>Number</type>
+    </html>
+  </field>
+  <primaryKey>
+    <name>id</name>
+    <autoincrement>true</autoincrement>
+  </primaryKey>
+
+  <field>
+    <name>dialfire_tenant_identifier</name>
+    <title>Dialfire Tenant ID</title>
+    <type>varchar</type>
+    <length>64</length>
+    <required>true</required>
+    <comment>Unique identifier of tenant in dialfire</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <index>
+    <name>UI_dialfire_tenant_identifier</name>
+    <fieldName>dialfire_tenant_identifier</fieldName>
+    <unique>true</unique>
+  </index>
+
+  <field>
+    <name>name</name>
+    <title>Tenant Name</title>
+    <type>varchar</type>
+    <length>255</length>
+    <required>true</required>
+    <comment>Tenant name</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>token</name>
+    <title>Token</title>
+    <type>varchar</type>
+    <length>255</length>
+    <required>true</required>
+    <comment>Tenant token</comment>
+    <html>
+      <type>Text</type>
+    </html>
+  </field>
+
+  <field>
+    <name>created_date</name>
+    <title>Created Date</title>
+    <type>timestamp</type>
+    <comment></comment>
+    <required>true</required>
+    <default>CURRENT_TIMESTAMP</default>
+    <readonly>true</readonly>
+  </field>
+
+  <field>
+    <name>modified_date</name>
+    <title>Modified Date</title>
+    <type>timestamp</type>
+    <comment></comment>
+    <default>CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</default>
+    <readonly>true</readonly>
+  </field>
+
+</table>
