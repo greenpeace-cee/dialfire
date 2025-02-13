@@ -1,6 +1,6 @@
 {
     "name": "greenpeace-cee/dialfire",
-    "type": "project",
+    "type": "civicrm-ext",
     "license": "AGPL-3.0",
     "authors": [
         {
