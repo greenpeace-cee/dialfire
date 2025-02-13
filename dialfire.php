@@ -1,7 +1,12 @@
 <?php
 
 require_once 'dialfire.civix.php';
-require_once __DIR__ . '/vendor/autoload.php';
+$autoload = __DIR__ . '/vendor/autoload.php';
+
+if (file_exists($autoload)) {
+  require_once $autoload;
+}
+
 // phpcs:disable
 use CRM_Dialfire_ExtensionUtil as E;
 // phpcs:enable
